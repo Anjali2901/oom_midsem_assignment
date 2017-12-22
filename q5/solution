@@ -1,0 +1,1598 @@
+import java.util.Scanner;
+abstract class type{
+//type class is used for inheriting the type of people
+String name ;
+String category;
+String bench;
+int status;
+type(String category,String bench,String name,int status){//constructor of type class
+this.category=category;
+this.bench=bench;
+this.name=name;
+this.status=status;
+}
+abstract String getcategory();
+abstract String getbench();
+abstract String getname();
+abstract void print();
+abstract String getreceptionist();
+abstract void setreceptionist(String nm);
+public int getstatus(){
+    return this.status;
+}
+public void setstatus(){
+    this.status = 1;
+}
+}
+ 
+class breaker extends type{//class breaker
+ 
+private int experties;
+private int horoscope;
+ private String reception;
+//attributes of class are category ,name,becnch,experties ,horoscope
+breaker(String category,String bench,String name,int experties,int horoscope,int status,String reception){
+//constructor of class breaker
+super(category,bench,name,status);
+this.reception=reception;
+this.experties=experties;
+this.horoscope=horoscope;
+}
+ 
+//getters and setters 
+int getexpert(){
+return experties;
+}
+int gethoroscope(){
+return horoscope;
+}
+@Override
+String getcategory() {
+return category;
+}
+@Override
+String getbench() {
+return bench;
+}
+@Override
+String getname() {
+return name;
+}
+@Override
+void print() {
+System.out.println(this.name+" "+this.experties+" "+this.horoscope);
+}
+void setreceptionist(String reception){
+        this.reception=reception;
+    }
+    @Override
+    String getreceptionist() {
+     return reception;    
+    }
+}
+ 
+class VIP extends type{
+ 
+//VIP class containig number of events, date,month,year array ,venue and event name array of string type
+ 
+private int n;
+private int date[]=new int[100], month[]=new int[100], year[]=new int[100];
+private String event[]=new String[100],venue[]=new String[100],reception;
+ 
+VIP(String category, String bench, String name,int n,int[] date,int[] month,int[] year,String[] event,String[] venue,int status,String reception) {
+super(category, bench, name,status);
+this.n=n;
+this.reception=reception;
+for(int i=0;i<n;i++){
+this.date[i]=date[i];
+this.month[i]=month[i];
+this.year[i]=year[i];
+this.event[i]=event[i];
+this.venue[i]=venue[i];
+}
+}
+int getdate(int i){
+return date[i];
+}
+int getmonth(int i){
+return month[i];
+}
+int getyear(int i){
+return year[i];
+}
+String getvenue(int i){
+return venue[i];
+}
+String getevent(int i){
+return event[i];
+}
+//below is overriden methods 
+ 
+@Override
+String getcategory() {
+return category;
+}
+ 
+@Override
+String getbench() {
+return bench;
+}
+ 
+@Override
+String getname() {
+return name;
+}
+ void setreceptionist(String reception){
+        this.reception=reception;
+    }
+    @Override
+    String getreceptionist() {
+     return reception;    
+    }
+@Override
+void print() {
+System.out.println(this.name);
+for(int i=0;i<n;i++){
+System.out.println(this.date[i]+"-"+this.month[i]+"-"+this.year[i]+" "+this.event[i]+" "+this.venue[i]);
+}
+}
+}
+class commoners extends type{
+ private String reception;
+commoners(String category, String bench, String name,int status,String reception) {
+super(category, bench, name,status);
+this.reception=reception;
+}
+ void setreceptionist(String reception){
+        this.reception=reception;
+    }
+    @Override
+    String getreceptionist() {
+     return reception;    
+    }
+//below is overriden methods 
+@Override
+String getcategory() {
+return category;
+}
+ 
+@Override
+String getbench() {
+return bench;
+}
+ 
+@Override
+String getname() {
+return name;
+}
+ 
+@Override
+void print() {
+System.out.println(name);
+}
+}
+ 
+class eventpromo extends type{
+//event promoters type of people
+ 
+private int dd,mm,yy;
+private String eventname,reception,venue;
+ 
+eventpromo(String category, String bench, String name,int dd,int mm,int yy,String eventname,String venue,int status,String reception) {
+super(category, bench, name,status);
+this.reception=reception;
+this.dd=dd;
+this.mm=mm;
+this.yy=yy;
+this.eventname=eventname;
+this.venue=venue;
+}
+int getdate(){
+return dd;
+}
+int getmonth(){
+return mm;
+ 
+}void setreceptionist(String reception){
+        this.reception=reception;
+    }
+    @Override
+    String getreceptionist() {
+     return reception;    
+    }
+int getyear(){
+return yy;
+}
+String getvenue(){
+return venue;
+}
+String getevent(){
+return eventname;
+}
+ 
+//below is overriden methods 
+@Override
+String getcategory() {
+return category;
+}
+ 
+@Override
+String getbench() {
+return bench;
+}
+ 
+@Override
+String getname() {
+return name;
+}
+@Override
+void print() {
+System.out.println(this.name+" "+this.dd+"-"+this.mm+"-"+this.yy+" "+this.eventname+" "+this.venue);
+}
+ 
+}
+ 
+class brandpromo extends type{
+ 
+//brand promoters type of people
+ 
+private String brandname,office,reception;
+brandpromo(String category, String bench, String name,String brandname,String office,int status,String reception) {
+super(category, bench, name,status);
+this.brandname=brandname;
+this.office=office;
+}
+String getbrand(){
+return brandname;
+}
+String getoffice(){
+return office;
+}
+//below is overriden methods 
+ 
+@Override
+String getcategory() {
+return category;
+}
+  void setreceptionist(String reception){
+        this.reception=reception;
+    }
+    @Override
+    String getreceptionist() {
+     return reception;    
+    }
+@Override
+String getbench() {
+return bench;
+}
+ 
+@Override
+String getname() {
+return name;
+}
+@Override
+void print() {
+System.out.println(this.name+" "+this.brandname+" "+this.office);
+}
+ 
+}
+abstract class bench_type{
+ 
+String type_bench;
+bench_type(String type_bench){
+this.type_bench=type_bench;
+}
+abstract String getbench_type();
+}
+ 
+class backbencher extends bench_type{
+ 
+backbencher(String type_bench) {
+super(type_bench);
+}
+String getbench_type() {
+return this.type_bench;
+}
+}
+class celebrity extends bench_type{
+ 
+celebrity(String type_bench) {
+super(type_bench);
+}
+String getbench_type() {
+return this.type_bench;
+}
+}
+class crowdloving extends bench_type{
+ 
+crowdloving(String type_bench) {
+super(type_bench);
+}
+String getbench_type() {
+return this.type_bench;
+}
+}
+class sparseloving extends bench_type{
+ 
+sparseloving(String type_bench) {
+super(type_bench);
+}
+String getbench_type() {
+return this.type_bench;
+}
+}
+class entranceloving extends bench_type{
+entranceloving(String type_bench) {
+super(type_bench);
+}
+String getbench_type() {
+return this.type_bench;
+}
+}
+abstract class receptionist{
+ String type;
+ String name;
+ receptionist(String type,String name){
+     this.type=type;
+     this.name=name;
+ }
+ abstract String getname();
+abstract String gettype();
+ abstract type[][] arrange(type[][] ans,type[] typ,receptionist nm);
+}
+ 
+class first extends receptionist{
+    
+    public first(String type, String name) {
+        super(type, name);
+    }
+    @Override
+    String getname() {
+         return this.name;
+    }
+    
+    @Override
+    String gettype() {
+        
+    return this.type;
+    }
+    @Override          
+    type[][] arrange(type[][] ans,type[] typ,receptionist nm) {
+       
+     int index=-1,m=ans.length,n=ans[0].length;
+     for(int i=0;i<typ.length;i++){
+         if(typ[i].getstatus() == 0){
+             index=i; 
+          
+             typ[i].setstatus();
+             typ[index].setreceptionist(nm.getname());
+             break;
+         }
+     }   
+     //System.out.println(index);
+     if(index!=-1){
+     if(typ[index].getbench().equals("BB")){
+         int f=0;
+       for(int r=m-1;r>=0 ;r--){
+         for(int k=n-1;k>=0;k--){
+ 
+           if(ans[r][k] == null){
+                 typ[index].setreceptionist(nm.getname());
+           ans[r][k] = typ[index];     
+          // System.out.println(r+" "+k+" "+typ[index].getname());
+             f=1;
+            break;
+        }
+      }
+      if(f==1)break;
+    }
+  }    
+if(typ[index].getbench().equals("C")){
+       
+int v=n,f=0;
+if(v % 2 == 0 ){//number of columns are even
+for(int g=0;g<m;g++){
+ 
+int cent = (v-1)/2;
+int r=cent,k=r+1;
+if(ans[g][cent] == null)
+{
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+//System.out.println(g+" "+cent+" "+typ[index].getname());
+f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+if(r>=0 && ans[g][r]==null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r]=typ[index];
+//System.out.println(g+" "+r+" "+typ[index].getname());
+f=1;
+break;
+}
+if(ans[g][k] == null&&k<=v-1){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+//System.out.println(g+" "+k+" "+typ[index].getname());
+f=1;
+break;
+}
+k++;
+r--;
+}
+}
+if(f==1)
+break;
+}
+}
+else {//number of columns are odd
+for(int g=0;g<m;g++){
+int cent = v/2;
+int r=cent-1,k=cent+1;
+if(ans[g][cent] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+//System.out.println(g+" "+cent+" "+typ[index].getname());
+f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+  typ[index].setreceptionist(nm.getname());
+    ans[g][r]=typ[index];
+ 
+//System.out.println(g+" "+r+" "+typ[index].getname());
+f=1;
+break;
+}
+if(ans[g][k] == null&&k<=(v-1)){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+//System.out.println(g+" "+k+" "+typ[index].getname());
+f=1;
+break;
+}
+r--;
+k++;
+}
+}
+if(f==1)
+break;
+}
+}
+}   
+ 
+if(typ[index].getbench().equals("SL")){
+   // System.out.println(index);
+int index_r=0,index_c=0,max=0,val=0,c1=0;
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+ 
+if(ans[r][c]==null){
+int temp = c,r1=r;
+c1=c;
+int ct = 0;
+while(temp<n && ans[r][temp] == null){
+ct++;
+temp++;
+}
+if(max < ct){
+max=ct;
+index_r = r;
+index_c = c;
+}
+} 
+}
+val=max;
+}
+int mid = ((index_c+val-1)+index_c)/2;
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][mid]=typ[index];
+//System.out.println(index_r+" "+mid+" "+typ[index].getname()+" "+typ[index].getstatus());
+}
+if(typ[index].getbench().equals("EL")){
+    int r=0,f=0;
+while(r<n){
+for(int g=0;g<m;g++){
+if(ans[g][r] == null){
+    typ[index].setreceptionist(nm.getname());
+ans[g][r] = typ[index];
+//System.out.println(g+" "+r+" "+typ[index].getname()+" "+typ[index].getstatus());
+f=1;
+break;
+}
+}
+r++;
+if(f==1)break;
+} 
+}
+if(typ[index].getbench().equals("CL")){
+int temp=0,val=0,maxm = -1,index_r=0,index_c=0 ; 
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+if(ans[r][c]==null){
+temp = 1;
+for(int d=c+1;d<n;d++){
+if(ans[r][d] != null){
+temp++;
+}
+else 
+break;
+}
+for(int d=c-1;d>=0;d--){
+if(ans[r][d] != null){
+temp++;
+}
+else 
+break;
+} 
+}
+if(temp > maxm){
+maxm=temp;
+index_r = r;
+index_c = c;
+}
+}
+} 
+typ[index].setreceptionist(nm.getname());
+ans[index_r][index_c] = typ[index];
+//System.out.println(index_r+" "+index_c+" "+typ[index].getname());
+}
+     }
+return ans;
+}
+ 
+}
+class methodological extends receptionist{
+    
+    public methodological(String type, String name) {
+        super(type, name);
+    }
+    String getname() {
+         return this.name;
+    }
+ 
+    @Override
+    type[][] arrange(type[][] ans,type[] typ,receptionist nm) {
+      
+        
+        int min=19999,index=-1,m=ans.length,n=ans[0].length;
+         //System.out.println(index);
+        for(int i=0;i<typ.length;i++){
+            if((int)typ[i].getname().charAt(0) < min && typ[i].getstatus() == 0){
+                 
+                min = (int)typ[i].getname().charAt(0);
+                index = i;
+                  
+            }
+        }
+    if(index!=-1){
+        typ[index].setstatus();
+         if(typ[index].getbench().equals("BB")){
+         int f=0;
+       for(int r=m-1;r>=0 ;r--){
+         for(int k=n-1;k>=0;k--){
+ 
+           if(ans[r][k] == null){
+                 typ[index].setreceptionist(nm.getname());
+           ans[r][k] = typ[index];
+           
+             f=1;
+            break;
+        }
+      }
+      if(f==1)break;
+    }
+  }
+if(typ[index].getbench().equals("C")){
+       
+int v=n,f=0;
+if(v % 2 == 0 ){//number of columns are even
+for(int g=0;g<m;g++){
+ 
+int cent = (v-1)/2;
+int r=cent,k=r+1;
+if(ans[g][cent] == null)
+{
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+//System.out.println(g+" "+cent+" "+typ[index]);
+f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+  typ[index].setreceptionist(nm.getname());
+    ans[g][r]=typ[index];
+ 
+//System.out.println(g+" "+r+" "+typ[index]);
+f=1;
+break;
+}
+if(ans[g][k] == null&&k<=v-1){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+//System.out.println(g+" "+k+" "+typ[index]);
+f=1;
+break;
+}
+ 
+k++;
+r--;
+}
+ 
+}
+if(f==1)
+break;
+}
+}
+else {//number of columns are odd
+ 
+for(int g=0;g<m;g++){
+ 
+int cent = v/2;
+int r=cent-1,k=cent+1;
+if(ans[g][cent] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+//System.out.println(g+" "+cent+" "+typ[index]);
+ f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r]=typ[index];
+//System.out.println(g+" "+r+" "+typ[index]);
+ f=1;
+break;
+}
+if(ans[g][k] == null&&k<=(v-1)){
+    
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+//System.out.println(g+" "+k+" "+typ[index]);
+f=1;
+break;
+}
+r--;
+k++;
+}
+}
+if(f==1)
+break;
+}
+}
+}   
+if(typ[index].getbench().equals("SL")){
+ int index_r=0,index_c=0,max=0,val=0,c1=0;
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+ 
+if(ans[r][c]==null){
+int temp = c,r1=r;
+c1=c;
+int ct = 0;
+while(temp<n && ans[r][temp] == null){
+ct++;
+temp++;
+ 
+}
+if(max < ct){
+max=ct;
+index_r = r;
+index_c = c;
+}
+ 
+} 
+}
+val=max;
+}
+int mid = ((index_c+val-1)+index_c)/2;
+ 
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][mid]=typ[index];
+//System.out.println(index_r+" "+mid+" "+typ[index]);
+}
+if(typ[index].getbench().equals("EL")){
+    int r=0,f=0;
+while(r<n){
+for(int g=0;g<m;g++){
+if(ans[g][r] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r] = typ[index];
+//System.out.println(g+" "+r+" "+typ[index]);
+f=1;
+break;
+}
+}
+r++;
+if(f==1)break;
+} 
+}
+if(typ[index].getbench().equals("CL")){
+    int temp=0,val=0,maxm = -1,index_r=0,index_c=0 ; 
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+if(ans[r][c]==null){
+temp = 1;
+ 
+for(int d=c+1;d<n;d++){
+ 
+if(ans[r][d] != null){
+temp++;
+ 
+}
+else 
+break;
+}
+for(int d=c-1;d>=0;d--){
+if(ans[r][d] != null){
+temp++;
+ 
+}
+else 
+break;
+ 
+} 
+ 
+}
+if(temp > maxm){
+maxm=temp;
+index_r = r;
+index_c = c;
+ 
+}
+}
+}
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][index_c] = typ[index];
+ 
+}
+    }
+      return ans;   
+    }
+ 
+    @Override
+    String gettype() {
+     return this.type;
+       }
+     
+}
+class onepertype extends receptionist{
+    private int value;
+   
+    public onepertype(String type, String name,int value) {
+        super(type, name); 
+         this.value=value;
+        }
+    void setvalue(int i ){
+        this.value=i;
+    }
+    String gettype(){
+        return this.type;
+    }
+    int getvalue(){
+       return value; 
+    }
+     String getname() {
+         return this.name;
+    }
+ 
+    @Override
+    type[][] arrange(type[][] ans,type[] typ,receptionist nm) {
+          int  m=ans.length,n=ans[0].length;
+             
+         String  arr[]={"breaker","VIP", "commoner","event","brand"};
+      for(int i=getvalue()%5; ;i=(i+1)%5){
+          int index=0,flag=0;
+          for(int j=0;j<typ.length;j++){   
+                  
+              if(typ[j].getcategory().equals(arr[i])){
+                  if(typ[j].getstatus() == 0){
+                      index = j;
+                      flag=1;
+                     // System.out.println(i);
+                      setvalue((i+1)%5);
+                      typ[j].setstatus();
+                      break;
+                  }
+                 
+              }
+            
+          }
+          if(flag==1){
+            if(typ[index].getbench().equals("BB")){
+         int f=0;
+       for(int r=m-1;r>=0 ;r--){
+         for(int k=n-1;k>=0;k--){
+ 
+           if(ans[r][k] == null){
+                 typ[index].setreceptionist(nm.getname());
+           ans[r][k] = typ[index];
+         
+             f=1;
+            break;
+        }
+      }
+      if(f==1)break;
+    }
+  }
+if(typ[index].getbench().equals("C")){
+       
+int v=n,f=0;
+if(v % 2 == 0 ){//number of columns are even
+for(int g=0;g<m;g++){
+ 
+int cent = (v-1)/2;
+int r=cent,k=r+1;
+if(ans[g][cent] == null)
+{
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+ 
+f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+    typ[index].setreceptionist(nm.getname());
+ans[g][r]=typ[index];
+ 
+f=1;
+break;
+}
+if(ans[g][k] == null&&k<=v-1){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+ 
+f=1;
+break;
+}
+ 
+k++;
+r--;
+}
+}
+if(f==1)
+break;
+}
+}
+else {//number of columns are odd
+ 
+for(int g=0;g<m;g++){
+ 
+int cent = v/2;
+int r=cent-1,k=cent+1;
+if(ans[g][cent] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+ f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r]=typ[index];
+ f=1;
+break;
+}
+if(ans[g][k] == null&&k<=(v-1)){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+ f=1;
+break;
+}
+r--;
+k++;
+}
+}
+ 
+if(f==1)
+break;
+}
+}
+}
+if(typ[index].getbench().equals("SL")){
+ int index_r=0,index_c=0,max=0,val=0,c1=0;
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+ 
+if(ans[r][c]==null){
+int temp = c,r1=r;
+c1=c;
+int ct = 0;
+while(temp<n && ans[r][temp] == null){
+ct++;
+temp++;
+ 
+}
+if(max < ct){
+max=ct;
+index_r = r;
+index_c = c;
+}
+ 
+} 
+}
+val=max;
+}
+int mid = ((index_c+val-1)+index_c)/2;
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][mid]=typ[index];
+ 
+}
+if(typ[index].getbench().equals("EL")){
+    int r=0,f=0;
+while(r<n){
+for(int g=0;g<m;g++){
+if(ans[g][r] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r] = typ[index];
+ 
+f=1;
+break;
+}
+}
+r++;
+if(f==1)break;
+} 
+}
+if(typ[index].getbench().equals("CL")){
+    int temp=0,val=0,maxm = -1,index_r=0,index_c=0 ; 
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+if(ans[r][c]==null){
+temp = 1;
+ 
+for(int d=c+1;d<n;d++){
+ 
+if(ans[r][d] != null){
+temp++;
+ 
+}
+else 
+break;
+}
+for(int d=c-1;d>=0;d--){
+if(ans[r][d] != null){
+temp++;
+ 
+}
+else 
+break;
+ 
+} 
+ 
+}
+if(temp > maxm){
+maxm=temp;
+index_r = r;
+index_c = c;
+ 
+   }
+  }
+ }
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][index_c] = typ[index];   
+}      
+}   
+          if(flag==1)break;
+      }
+        return ans; 
+}
+}
+class VIPonly extends receptionist{
+    
+    public VIPonly(String type, String name) {
+        super(type, name);
+    }
+     String getname() {
+         return this.name;
+    }
+    String gettype(){
+        return this.type;
+    }
+ 
+    @Override
+    type[][] arrange(type[][] ans, type[] typ,receptionist nm) {
+        int index=0,flag=0,m=ans.length,n=ans[0].length;
+            for(int i=0;i<typ.length;i++){
+                if(typ[i].getcategory().equals("VIP")){
+                    if(typ[i].getstatus() == 0){
+                       index=i;
+                       flag=1;
+                       typ[i].setstatus();
+                       break;
+                    }
+                }
+            }
+        if(flag==1){    
+             if(typ[index].getbench().equals("BB")){
+         int f=0;
+       for(int r=m-1;r>=0 ;r--){
+         for(int k=n-1;k>=0;k--){
+ 
+           if(ans[r][k] == null){
+                 typ[index].setreceptionist(nm.getname());
+           ans[r][k] = typ[index];
+         
+             f=1;
+            break;
+        }
+      }
+      if(f==1)break;
+    }
+  }
+if(typ[index].getbench().equals("C")){
+       
+int v=n,f=0;
+if(v % 2 == 0 ){//number of columns are even
+for(int g=0;g<m;g++){
+ 
+int cent = (v-1)/2;
+int r=cent,k=r+1;
+if(ans[g][cent] == null)
+{
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+ 
+f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r]=typ[index];
+ 
+f=1;
+break;
+}
+if(ans[g][k] == null&&k<=v-1){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+ 
+f=1;
+break;
+}
+ 
+k++;
+r--;
+}
+}
+if(f==1)
+break;
+}
+}
+else {//number of columns are odd
+ 
+for(int g=0;g<m;g++){
+ 
+int cent = v/2;
+int r=cent-1,k=cent+1;
+if(ans[g][cent] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+ f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r]=typ[index];
+ f=1;
+break;
+}
+if(ans[g][k] == null&&k<=(v-1)){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+ f=1;
+break;
+}
+r--;
+k++;
+}
+}
+ 
+if(f==1)
+break;
+}
+}
+}   
+if(typ[index].getbench().equals("SL")){
+ int index_r=0,index_c=0,max=0,val=0,c1=0;
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+ 
+if(ans[r][c]==null){
+int temp = c,r1=r;
+c1=c;
+int ct = 0;
+while(temp<n && ans[r][temp] == null){
+ct++;
+temp++;
+ 
+}
+if(max < ct){
+max=ct;
+index_r = r;
+index_c = c;
+}
+ 
+} 
+}
+val=max;
+}
+int mid = ((index_c+val-1)+index_c)/2;
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][mid]=typ[index];
+ 
+}
+if(typ[index].getbench().equals("EL")){
+    int r=0,f=0;
+while(r<n){
+for(int g=0;g<m;g++){
+if(ans[g][r] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r] = typ[index];
+ 
+f=1;
+break;
+}
+}
+r++;
+if(f==1)break;
+} 
+}
+if(typ[index].getbench().equals("CL")){
+    int temp=0,val=0,maxm = -1,index_r=0,index_c=0 ; 
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+if(ans[r][c]==null){
+temp = 1;
+ 
+for(int d=c+1;d<n;d++){
+ 
+if(ans[r][d] != null){
+temp++;
+ 
+}
+else 
+break;
+}
+for(int d=c-1;d>=0;d--){
+if(ans[r][d] != null){
+temp++;
+ 
+}
+else 
+break;
+ 
+} 
+ 
+}
+if(temp > maxm){
+maxm=temp;
+index_r = r;
+index_c = c;
+ 
+   }
+  }
+ }
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][index_c] = typ[index];
+    }  
+  }
+            return ans;
+    }
+   
+}
+class breakerOnly  extends receptionist{
+    
+    public breakerOnly(String type, String name) {
+        super(type, name);
+    }
+     String getname() {
+         return this.name;
+    }
+String gettype(){
+    return this.type;
+}
+    @Override
+    type[][] arrange(type[][] ans, type[] typ,receptionist nm) {
+        int index=-1,flag=0,m=ans.length,n=ans[0].length;
+        for(int i=0;i<typ.length;i++){
+            if(typ[i].getcategory().equals("breaker")){
+                if(typ[i].getstatus() == 0){
+                    index=i;
+                    flag=1;
+                    typ[i].setstatus();
+                    break;
+                }
+            }
+        }
+        if(flag==1){
+         if(typ[index].getbench().equals("BB")){
+         int f=0;
+       for(int r=m-1;r>=0 ;r--){
+         for(int k=n-1;k>=0;k--){
+ 
+           if(ans[r][k] == null){
+                 typ[index].setreceptionist(nm.getname());
+           ans[r][k] = typ[index];
+           
+             f=1;
+            break;
+        }
+      }
+      if(f==1)break;
+    }
+  }
+if(typ[index].getbench().equals("C")){
+       
+int v=n,f=0;
+if(v % 2 == 0 ){//number of columns are even
+for(int g=0;g<m;g++){
+ 
+int cent = (v-1)/2;
+int r=cent,k=r+1;
+if(ans[g][cent] == null)
+{
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r]=typ[index];
+f=1;
+break;
+}
+if(ans[g][k] == null&&k<=v-1){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+f=1;
+break;
+}
+ 
+k++;
+r--;
+}
+ 
+}
+if(f==1)
+break;
+}
+}
+else {//number of columns are odd
+ 
+for(int g=0;g<m;g++){
+ 
+int cent = v/2;
+int r=cent-1,k=cent+1;
+if(ans[g][cent] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][cent]=typ[index];
+f=1;
+break;
+}
+else{
+while(r<k){
+if(r<0)
+break;
+ 
+if(r>=0 && ans[g][r]==null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r]=typ[index];
+ f=1;
+break;
+}
+if(ans[g][k] == null&&k<=(v-1)){
+      typ[index].setreceptionist(nm.getname());
+ans[g][k]=typ[index];
+f=1;
+break;
+}
+r--;
+k++;
+}
+}
+ 
+if(f==1)
+break;
+}
+}
+}   
+if(typ[index].getbench().equals("SL")){
+ int index_r=0,index_c=0,max=0,val=0,c1=0;
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+ 
+if(ans[r][c]==null){
+int temp = c,r1=r;
+c1=c;
+int ct = 0;
+while(temp<n && ans[r][temp] == null){
+ct++;
+temp++;
+ 
+}
+if(max < ct){
+max=ct;
+index_r = r;
+index_c = c;
+}
+ 
+} 
+}
+val=max;
+}
+int mid = ((index_c+val-1)+index_c)/2;
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][mid]=typ[index];
+}
+if(typ[index].getbench().equals("EL")){
+    int r=0,f=0;
+while(r<n){
+for(int g=0;g<m;g++){
+if(ans[g][r] == null){
+      typ[index].setreceptionist(nm.getname());
+ans[g][r] = typ[index];
+f=1;
+break;
+}
+}
+r++;
+if(f==1)break;
+} 
+}
+if(typ[index].getbench().equals("CL")){
+    int temp=0,val=0,maxm = -1,index_r=0,index_c=0 ; 
+for(int r=0;r<m;r++){
+for(int c=0;c<n;c++){
+if(ans[r][c]==null){
+temp = 1;
+ 
+for(int d=c+1;d<n;d++){
+ 
+if(ans[r][d] != null){
+temp++;
+ 
+}
+else 
+break;
+}
+for(int d=c-1;d>=0;d--){
+if(ans[r][d] != null){
+temp++;
+}
+else 
+break;
+} 
+}
+if(temp > maxm){
+maxm=temp;
+index_r = r;
+index_c = c;
+ 
+}
+}
+}
+  typ[index].setreceptionist(nm.getname());
+ans[index_r][index_c] = typ[index];
+  }
+ }
+    return ans;
+ }
+ 
+}
+ 
+public class NewClass{
+  public static void main(String args[] ) throws Exception {//main class
+  Scanner s=new Scanner(System.in);//scanner to take input
+  int t=s.nextInt();//testcases
+  for(int i=0;i<t;i++){//loop runnig for number of testcases
+      
+int m=s.nextInt();//seating area rows
+int n=s.nextInt();//person in each row
+int a=s.nextInt();//no. of audience
+type typ[]=new type[a];//array of type class to contain all people 
+type ans[][]=new type[m][n];
+for(int j=0;j<a;j++){
+String st=s.next();//st=category
+ 
+//scan all attributes of different types of people 
+if(st.equals("breaker")){
+String bench=s.next();
+typ[j]=new breaker("breaker",bench,s.next(),s.nextInt(),s.nextInt(),0,null);
+}
+if(st.equals("VIP")){
+String bench=s.next();
+String name=s.next();
+int e=s.nextInt();
+int dd[]=new int[e+10], mm[]=new int[e+10],yy[]=new int[e+10];
+String event[]=new String[e+10],venue[] = new String[e+10];
+for(int k=0;k<e;k++){//loop running till number of events
+ 
+int da=s.nextInt();
+int mo=s.nextInt();
+int yr=s.nextInt();
+String eve=s.next();
+String ven=s.next();
+dd[k]=da;
+mm[k]=mo;
+yy[k]=yr;
+event[k]=eve;
+venue[k]=ven;
+}
+typ[j]=new VIP("VIP",bench,name,e,dd,mm,yy,event,venue,0,null); 
+}
+if(st.equals("commoner")){
+    String bench=s.next();
+typ[j]=new commoners("commoner",bench,s.next(),0,null);
+}
+ 
+if(st.equals("event")){
+    String bench=s.next();
+typ[j]=new eventpromo("event",bench,s.next(),s.nextInt(),s.nextInt(),s.nextInt(),s.next(),s.next(),0,null);
+}
+if(st.equals("brand")){
+String bench=s.next();
+typ[j]=new brandpromo("brand",bench,s.next(),s.next(),s.next(),0,null);
+}
+}
+int r=s.nextInt();// number of receptionists
+receptionist rp[]=new receptionist[r];
+onepertype one[]=new onepertype[1000];
+int ct_one = 0;
+for(int l=0;l<r;l++){
+String fi=s.next();//type of receptionists
+String nm=s.next();//name of receptionists
+if(fi.equals("first")){
+    rp[l]=new first(fi,nm);
+}
+else if (fi.equals("methodological")){
+    rp[l]=new methodological(fi,nm);
+}
+else if(fi.equals("OnePerType")){
+    rp[l]=new onepertype(fi,nm,0);
+    one[ct_one++]=new onepertype(fi,nm,0);
+ }
+else if(fi.equals("VIP")){
+    rp[l]=new VIPonly(fi,nm);
+}
+else{
+    rp[l]=new  breakerOnly(fi,nm);
+ }
+}
+int log=s.nextInt();//log determining if to print log or no
+ 
+ int count=a;
+ int f=0,var=0;
+while(count>0){
+  for(int ax=0;ax<r;ax++){
+      if(rp[ax].gettype().equals("OnePerType")){
+          for(int cc=var;cc<ct_one;cc++){
+              
+             rp[ax].arrange(ans,typ,rp[ax]);
+             var++;
+            break;
+          }
+          if(var>=ct_one){
+              var=0;
+          }
+          count--;
+      }
+      else{
+          if(rp[ax].gettype().equals("VIP")){
+              int ct=0;
+              for(int ll=0;ll<typ.length;ll++){
+                  if(typ[ll].getcategory().equals("VIP") && typ[ll].getstatus()== 0){
+                        ct++;                  
+                  }           
+              }
+              if(ct > 0){
+                   rp[ax].arrange(ans,typ,rp[ax]);
+                  count--;
+              }
+          }
+          else if(rp[ax].gettype().equals("breaker")){
+                int ct=0;
+              for(int ll=0;ll<typ.length;ll++){
+                  if(typ[ll].getcategory().equals("breaker") && typ[ll].getstatus()== 0){
+                        ct++;                  
+                  }           
+              }
+              if(ct > 0){
+                   rp[ax].arrange(ans,typ,rp[ax]);
+                  count--;
+              }
+          }
+              
+          else{
+              rp[ax].arrange(ans,typ,rp[ax]);
+                  count--;
+          }
+        
+    
+      }
+     if(count<=0)
+     {
+         f=1;
+         break;
+     }    
+   }
+  if(f==1)
+      break;
+   }
+ 
+  for(int gg=0;gg<m;gg++){
+for(int ff=0;ff<n;ff++){
+ans[gg][ff].print();
+}
+}
+  for(int tt=0;tt<r;tt++){
+      System.out.println(rp[tt].getname());
+       for(int gg=0;gg<m;gg++){
+            for(int ff=0;ff<n;ff++){
+                  if(rp[tt].getname().compareTo(ans[gg][ff].getreceptionist()) == 0){
+                      if(rp[tt].gettype().compareTo("first") == 0){
+                          System.out.println((((n*gg)+ff)+1)+" "+ans[gg][ff].getname());
+                      }
+                      if(rp[tt].gettype().compareTo("VIP") == 0){
+                          System.out.println(ans[gg][ff].getname());
+                      }
+                      if(rp[tt].gettype().compareTo("methodological") == 0){
+                          System.out.println(ans[gg][ff].getname());
+                      }
+                      if(rp[tt].gettype().compareTo("OnePerType") == 0){
+                          System.out.println(ans[gg][ff].getcategory()+" "+ans[gg][ff].getname());
+                      }
+                      
+                  }
+                  
+           }
+       }
+  }
+  
+}
+}
+}
