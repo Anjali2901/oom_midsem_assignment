@@ -1,0 +1,40 @@
+SAMPLE INPUT 
+1
+3 4
+12
+event SL A 31 3 2017 EX VX
+breaker BB B 10 3
+brand EL C B1 S1
+VIP C D 1 
+31 9 2017 E5 V5
+commoner CL E
+breaker BB F 1 8
+VIP C G 2 
+1 1 2017 E1 V1 
+31 8 2016 E2 V2
+commoner CL H
+event SL I 4 10 2017 EY VY
+VIP C J 1 
+4 7 2017 E3 V3
+commoner CL K
+brand EL L B2 S2
+1
+first R1
+0
+SAMPLE OUTPUT 
+C B1 S1
+A 31-3-2017 EX VX
+D
+31-9-2017 E5 V5
+E
+J
+4-7-2017 E3 V3
+G
+1-1-2017 E1 V1
+31-8-2016 E2 V2
+I 4-10-2017 EY VY
+K
+L B2 S2
+H
+F 1 8
+B 10 3
